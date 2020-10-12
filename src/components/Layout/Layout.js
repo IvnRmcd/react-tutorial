@@ -1,13 +1,13 @@
 import React from "react";
-import Aux from "../../hoc/Auxillary";
+import Aux from "../../hoc/Auxillary"; //AUX allows adjacent JSX elements to exist next to each other
 import styles from "./Layout.module.css";
 import Toolbar from "../Navigation/Toolbar/Toolbar";
-
-//AUX allows adjacent JSX elements to exist next to each other
+import SideDrawer from "../Navigation/SideDrawer/SideDrawer";
 
 const layout = (props) => (
   <Aux>
     <Toolbar />
+    <SideDrawer />
     <main className={styles.Content}>{props.children}</main>
   </Aux>
 );
