@@ -32,7 +32,6 @@ class BurgerBuilder extends Component {
         this.setState({ ingredients: response.data });
       })
       .catch((error) => {
-        console.log(error);
         this.setState({ error: true });
       });
   }
@@ -104,7 +103,7 @@ class BurgerBuilder extends Component {
   };
 
   purchaseContinueHandler = () => {
-    this.setState({ loading: true });
+    /*  this.setState({ loading: true });
     const order = {
       ingredient: this.state.ingredients,
       price: this.state.totalPrice,
@@ -127,7 +126,24 @@ class BurgerBuilder extends Component {
       .catch((error) => {
         console.log(error);
         this.setState({ loading: false, purchasing: false });
-      });
+      }); */
+
+    // This is one way of passing the ingredients state to another component
+    /*     const queryParams = [];
+    for (let i in this.state.ingredients) {
+      queryParams.push(
+        encodeURIComponent(i) +
+          "=" +
+          encodeURIComponent(this.state.ingredients[i])
+      );
+    }
+     const queryString = queryParams.join("&");
+ */
+
+    this.props.history.push({
+      pathname: "/checkout",
+      state: { ingredients: this.state.ingredients },
+    });
   };
 
   render() {
